@@ -1,5 +1,6 @@
-FROM nginx/latest
+FROM centos
 LABEL maintainer "gaozhonglei"
+ADD nginx /usr/local/src
 # COPY ./build/ /usr/share/nginx/html/
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 49002
