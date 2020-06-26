@@ -1,4 +1,4 @@
-FROM nginx
+FROM nginx/latest
 LABEL maintainer "gaozhonglei"
 # COPY ./build/ /usr/share/nginx/html/
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
