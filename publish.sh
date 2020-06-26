@@ -1,7 +1,4 @@
 
-docker build . -t jenkins1:web
-docker save jenkins1:web -o jenkins
-docker ps -a|grep "jenkins1-web" | awk '{print $1}' | xargs docker stop
-docker ps -a|grep "jenkins1-web" | awk '{print $1}' | xargs docker rm
-docker run -d --name=jenkins1-web -p 49002:49002 jenkins1:web
+docker build . -t centos:1.0
+docker run -d --name=mycentos -p 49002:49002 centos:1.0 /bin/bash
 docker rmi $(docker images -a|grep none|awk '{print $3}')
