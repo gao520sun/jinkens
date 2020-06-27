@@ -8,8 +8,11 @@ RUN yum -y install wget  && wget http://nginx.org/download/$NG_VERSION.tar.gz &&
 
  #安装编译依赖包
 RUN yum install -y gcc gcc-c++ glibc make autoconf openssl openssl-devel && yum install -y pcre-devel  libxslt-devel gd-devel GeoIP GeoIP-devel GeoIP-data
+
 RUN yum clean all  #清理仓库
+
 RUN useradd -M -s /sbin/nologin nginx   #创建nginx用户
+
 WORKDIR /usr/local/src/$NG_VERSION   #切换工作目录
 
 #编译安装nginx
@@ -17,9 +20,11 @@ RUN ./configure --user=nginx --group=nginx --prefix=/usr/local/nginx --with-file
 
 # ADD index.html /usr/local/nginx/html   
 VOLUME  /usr/local/nginx/html            #设置容器中要挂在到宿主机的目录
+
 ENV PATH /usr/local/nginx/sbin:$PATH #设置sbin环境变量
 
-EXPOSE 80/tcp                              
-ENTRYPOINT ["nginx"]                  
-CMD ["-g","daemon off;"]
+EXPOSE 80
+# EXPOSE 80/tcp                              
+# ENTRYPOINT ["nginx"]                  
+# CMD ["-g","daemon off;"]
 #当ENTRYPOINT和CMD连用时，CMD的命令是ENTRYPOINT命令的参数，两者连用相当于nginx -g "daemon off;"而当一起连用的时候命令格式最好一致（这里选择的都是json格式的是成功的，如果都是sh模式可以试一下）
