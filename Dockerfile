@@ -1,7 +1,7 @@
 FROM centos:latest
 MAINTAINER gaozhonglie   #作者信息
 WORKDIR /usr/local/src/      #工作目录
-ENV NG_VERSION nginx-1.19.0  #定义环境变量
+ENV NG_VERSION nginx-1.19.0
 
 RUN yum -y install epel-release     #安装epel仓库
 RUN yum -y install wget  && wget http://nginx.org/download/$NG_VERSION.tar.gz && tar xzvf $NG_VERSION.tar.gz   #下载nginx文件并解压
