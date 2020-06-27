@@ -1,4 +1,4 @@
-FROM centos:lates
+FROM centos:latest
 MAINTAINER gaozhonglie   #作者信息
 WORKDIR /usr/local/src/      #工作目录
 ENV NG_VERSION nginx-1.19.0  #定义环境变量
